@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="JavaBean.Proiect" table="PROIECTE" optimistic-lock="version">
+
+        <id name="ID_PROIECT" type="java.lang.Long">
+            <column name="ID_Proiect" sql-type="BIGINT" not-null="true"/>
+            <generator class="identity"/>
+        </id>
+
+        <property name="NUME" type="java.lang.String">
+            <column name="Nume" sql-type="VARCHAR" length="45" not-null="true" unique="true"/>
+        </property>
+
+        <property name="STATUS" type="java.lang.String">
+            <column name="Status" sql-type="VARCHAR" length="45" not-null="true"/>
+        </property>
+
+        <property name="TIP" type="java.lang.String">
+            <column name="Tip" sql-type="VARCHAR" length="45" not-null="true"/>
+        </property>
+
+        <property name="START_DATE" type="java.time.LocalDate">
+            <column name="Start_date" sql-type="DATE" not-null="false"/>
+        </property>
+
+        <property name="FINISH_DATE" type="java.time.LocalDate">
+            <column name="Finish_date" sql-type="DATE" not-null="false"/>
+        </property>
+
+        <set name="CONTRACTE" table="CONTRACTE" inverse="true" lazy="true" fetch="select">
+            <key column="ID_PROIECT"/>
+            <one-to-many class="JavaBean.Contract"/>
+        </set>
+    </class>
+</hibernate-mapping>
