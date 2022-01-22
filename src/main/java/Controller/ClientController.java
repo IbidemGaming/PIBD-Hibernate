@@ -71,7 +71,7 @@ public class ClientController extends HttpServlet
             ADRESA = ADRESA.length() == 0 ? client.getADRESA() : ADRESA;
 
             clientDAO.updateClient(ID_CLIENT, CNP, NUME, PRENUME, TELEFON, EMAIL, ADRESA);
-            response.sendRedirect("Clienti?displayClienti=Tabelul+cu+judecători");
+            response.sendRedirect("Clienti?displayClienti=Tabelul+cu+clienti");
         }
         else if (request.getParameter("deleteClient") != null)
         {
